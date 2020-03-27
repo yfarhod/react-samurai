@@ -17,7 +17,11 @@ const App = props => {
         <Header />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route path="/" exact component={Profile} />
+          <Route
+            path="/"
+            exact
+            render={() => <Profile posts={props.posts} />}
+          />
           <Route
             path="/profile"
             render={() => <Profile posts={props.posts} />}
