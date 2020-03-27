@@ -16,6 +16,15 @@
   color: gold;
 }
 
+.dialogsItems img {
+  width: 40px;
+  vertical-align: middle;
+}
+
 .messages {
   padding: 15px;
+}
+
+.evenItem {
+  margin-left: 40px;
 }

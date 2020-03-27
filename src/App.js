@@ -9,28 +9,27 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
 import { Route, BrowserRouter } from 'react-router-dom';
+import Sidebar from './components/Sidebar/Sidebar';
 
 const App = props => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar data={props.state.sidebar} />
         <div className="app-wrapper-content">
           <Route
             path="/"
             exact
-            render={() => <Profile posts={props.posts} />}
+            render={() => <Profile data={props.state.profilePage} />}
           />
           <Route
             path="/profile"
-            render={() => <Profile posts={props.posts} />}
+            render={() => <Profile data={props.state.profilePage} />}
           />
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs dialogs={props.dialogs} messages={props.messages} />
-            )}
+            render={() => <Dialogs data={props.state.dialogsPage} />}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

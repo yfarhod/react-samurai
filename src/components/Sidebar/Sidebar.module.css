@@ -1,0 +1,11 @@
+.section {
+  margin-left: 20px;
+  color: darkmagenta;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.friend {
+  color: white;
+}

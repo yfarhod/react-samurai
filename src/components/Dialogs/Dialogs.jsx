@@ -4,13 +4,19 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 
 const Dialogs = props => {
-  const dialogsElements = props.dialogs.map(d => (
-    <DialogItem name={d.name} id={d.id} key={d.id} />
+  const dialogsElements = props.data.dialogs.map(d => (
+    <DialogItem name={d.name} id={d.id} ava={d.ava} key={d.id} />
   ));
 
-  const messagesElements = props.messages.map(m => (
-    <Message message={m.message} key={m.id} />
-  ));
+  const messagesElements = props.data.messages.map(m =>
+    m.id % 2 !== 0 ? (
+      <Message message={m.message} key={m.id} />
+    ) : (
+      <div className={s.evenItem} key={m.id}>
+        <Message message={m.message} key={m.id} />
+      </div>
+    )
+  );
 
   return (
     <div className={s.dialogs}>
