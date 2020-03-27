@@ -7,5 +7,14 @@
 }
 
 .friend {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.barImage img {
+  width: 50px;
+}
+
+.barName {
   color: white;
 }
