@@ -4,7 +4,7 @@ import Post from './Post/Post';
 
 const MyPosts = props => {
   const postsElements = props.posts.map(p => (
-    <Post message={p.post} likes={p.likesCount} />
+    <Post message={p.post} likes={p.likesCount} key={p.id} />
   ));
 
   return (
