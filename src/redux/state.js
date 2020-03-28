@@ -1,3 +1,5 @@
+import { rerenderApp } from '../render';
+
 const state = {
   profilePage: {
     posts: [
@@ -32,14 +34,14 @@ const state = {
 };
 
 export const addPost = postMessage => {
-  debugger;
   const newPost = {
-    id: 3,
+    id: state.profilePage.posts.length + 1,
     post: postMessage,
     likesCount: 0
   };
 
   state.profilePage.posts.push(newPost);
+  rerenderApp(state, addPost);
 };
 
 export default state;
