@@ -20,13 +20,21 @@ const App = props => {
           path="/"
           exact
           render={() => (
-            <Profile data={props.state.profilePage} addPost={props.addPost} />
+            <Profile
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              updatePostText={props.updatePostText}
+            />
           )}
         />
         <Route
           path="/profile"
           render={() => (
-            <Profile data={props.state.profilePage} addPost={props.addPost} />
+            <Profile
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              updatePostText={props.updatePostText}
+            />
           )}
         />
         <Route

@@ -5,7 +5,8 @@ const state = {
     posts: [
       { id: 1, post: 'How are you dude?', likesCount: 15 },
       { id: 2, post: "It's my first post", likesCount: 20 }
-    ]
+    ],
+    newPostText: 'it-samurai'
   },
 
   dialogsPage: {
@@ -33,15 +34,21 @@ const state = {
   }
 };
 
-export const addPost = postMessage => {
+export const addPost = () => {
   const newPost = {
     id: state.profilePage.posts.length + 1,
-    post: postMessage,
+    post: state.profilePage.newPostText,
     likesCount: 0
   };
 
   state.profilePage.posts.push(newPost);
-  rerenderApp(state, addPost);
+  rerenderApp(state, addPost, updatePostText);
+  state.profilePage.newPostText = '';
+};
+
+export const updatePostText = newText => {
+  state.profilePage.newPostText = newText;
+  rerenderApp(state, addPost, updatePostText);
 };
 
 export default state;

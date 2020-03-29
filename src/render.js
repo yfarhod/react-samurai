@@ -5,10 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
-export const rerenderApp = (state, addPost) => {
+export const rerenderApp = (state, addPost, updatePostText) => {
   ReactDOM.render(
     <BrowserRouter>
-      <App state={state} addPost={addPost} />
+      <App state={state} addPost={addPost} updatePostText={updatePostText} />
     </BrowserRouter>,
     document.getElementById('root')
   );
