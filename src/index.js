@@ -1,4 +1,9 @@
-import state, { addPost, updatePostText } from './redux/state';
+import state, {
+  addPost,
+  updatePostText,
+  addNewMessage,
+  updateMessageText
+} from './redux/state';
 import { rerenderApp } from './render';
 
-rerenderApp(state, addPost, updatePostText);
+rerenderApp(state, addPost, updatePostText, addNewMessage, updateMessageText);

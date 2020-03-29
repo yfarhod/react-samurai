@@ -21,7 +21,8 @@ const state = {
       { id: 1, message: 'Hi' },
       { id: 2, message: 'How is your doing dude?' },
       { id: 3, message: 'Yo' }
-    ]
+    ],
+    newPostMessage: 'Type here'
   },
 
   sidebar: {
@@ -42,13 +43,32 @@ export const addPost = () => {
   };
 
   state.profilePage.posts.push(newPost);
-  rerenderApp(state, addPost, updatePostText);
+  startRender();
   state.profilePage.newPostText = '';
 };
 
 export const updatePostText = newText => {
   state.profilePage.newPostText = newText;
-  rerenderApp(state, addPost, updatePostText);
+  startRender();
 };
+
+export const addNewMessage = () => {
+  const newMessage = {
+    id: state.dialogsPage.messages.length + 1,
+    message: state.dialogsPage.newPostMessage
+  };
+
+  state.dialogsPage.messages.push(newMessage);
+  startRender();
+  state.dialogsPage.newPostMessage = '';
+};
+
+export const updateMessageText = newText => {
+  state.dialogsPage.newPostMessage = newText;
+  startRender();
+};
+
+const startRender = () =>
+  rerenderApp(state, addPost, updatePostText, addNewMessage, updateMessageText);
 
 export default state;
