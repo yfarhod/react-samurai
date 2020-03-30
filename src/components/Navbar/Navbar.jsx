@@ -33,7 +33,7 @@ const Navbar = props => {
       </div>
       <div>
         <br />
-        <Sidebar data={props.data} />
+        <Sidebar sidebar={props.sidebar} />
       </div>
     </nav>
   );

@@ -3,7 +3,7 @@ import s from './Sidebar.module.css';
 import SidebarItem from './SidebarItem/SidebarItem';
 
 const Sidebar = props => {
-  const friendItems = props.data.friends.map(f => (
+  const friendItems = props.sidebar.friends.map(f => (
     <SidebarItem name={f.name} key={f.id} ava={f.ava} />
   ));
 

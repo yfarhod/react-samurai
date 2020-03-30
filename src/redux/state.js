@@ -1,4 +1,4 @@
-import { rerenderApp } from '../render';
+let rerenderApp = () => {};
 
 const state = {
   profilePage: {
@@ -43,13 +43,13 @@ export const addPost = () => {
   };
 
   state.profilePage.posts.push(newPost);
-  startRender();
+  rerenderApp();
   state.profilePage.newPostText = '';
 };
 
 export const updatePostText = newText => {
   state.profilePage.newPostText = newText;
-  startRender();
+  rerenderApp();
 };
 
 export const addNewMessage = () => {
@@ -59,16 +59,17 @@ export const addNewMessage = () => {
   };
 
   state.dialogsPage.messages.push(newMessage);
-  startRender();
+  rerenderApp();
   state.dialogsPage.newPostMessage = '';
 };
 
 export const updateMessageText = newText => {
   state.dialogsPage.newPostMessage = newText;
-  startRender();
+  rerenderApp();
 };
 
-const startRender = () =>
-  rerenderApp(state, addPost, updatePostText, addNewMessage, updateMessageText);
+export const subscribe = observer => {
+  rerenderApp = observer;
+};
 
 export default state;

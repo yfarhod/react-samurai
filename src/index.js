@@ -2,8 +2,30 @@ import state, {
   addPost,
   updatePostText,
   addNewMessage,
-  updateMessageText
+  updateMessageText,
+  subscribe
 } from './redux/state';
-import { rerenderApp } from './render';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
-rerenderApp(state, addPost, updatePostText, addNewMessage, updateMessageText);
+export const rerenderApp = () => {
+  ReactDOM.render(
+    <BrowserRouter>
+      <App
+        state={state}
+        addPost={addPost}
+        updatePostText={updatePostText}
+        addNewMessage={addNewMessage}
+        updateMessageText={updateMessageText}
+      />
+    </BrowserRouter>,
+    document.getElementById('root')
+  );
+};
+
+rerenderApp();
+
+subscribe(rerenderApp);
