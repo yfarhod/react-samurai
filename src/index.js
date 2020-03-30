@@ -11,7 +11,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
-export const rerenderApp = () => {
+export const rerenderApp = state => {
   ReactDOM.render(
     <BrowserRouter>
       <App
@@ -26,6 +26,6 @@ export const rerenderApp = () => {
   );
 };
 
-rerenderApp();
+rerenderApp(state);
 
 subscribe(rerenderApp);

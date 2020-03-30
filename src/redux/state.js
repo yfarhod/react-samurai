@@ -43,13 +43,13 @@ export const addPost = () => {
   };
 
   state.profilePage.posts.push(newPost);
-  rerenderApp();
+  rerenderApp(state);
   state.profilePage.newPostText = '';
 };
 
 export const updatePostText = newText => {
   state.profilePage.newPostText = newText;
-  rerenderApp();
+  rerenderApp(state);
 };
 
 export const addNewMessage = () => {
@@ -59,13 +59,13 @@ export const addNewMessage = () => {
   };
 
   state.dialogsPage.messages.push(newMessage);
-  rerenderApp();
+  rerenderApp(state);
   state.dialogsPage.newPostMessage = '';
 };
 
 export const updateMessageText = newText => {
   state.dialogsPage.newPostMessage = newText;
-  rerenderApp();
+  rerenderApp(state);
 };
 
 export const subscribe = observer => {
