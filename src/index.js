@@ -8,18 +8,12 @@ import store from './redux/state';
 export const rerenderApp = state => {
   ReactDOM.render(
     <BrowserRouter>
-      <App
-        state={store.getState()}
-        addPost={store.addPost.bind(store)}
-        updatePostText={store.updatePostText.bind(store)}
-        addNewMessage={store.addNewMessage.bind(store)}
-        updateMessageText={store.updateMessageText.bind(store)}
-      />
+      <App state={state} dispatch={store.dispatch.bind(store)} />
     </BrowserRouter>,
     document.getElementById('root')
   );
 };
 
-rerenderApp(store);
+rerenderApp(store.getState());
 
 store.subscribe(rerenderApp);
