@@ -1,31 +1,25 @@
-import state, {
-  addPost,
-  updatePostText,
-  addNewMessage,
-  updateMessageText,
-  subscribe
-} from './redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import store from './redux/state';
 
 export const rerenderApp = state => {
   ReactDOM.render(
     <BrowserRouter>
       <App
-        state={state}
-        addPost={addPost}
-        updatePostText={updatePostText}
-        addNewMessage={addNewMessage}
-        updateMessageText={updateMessageText}
+        state={store.getState()}
+        addPost={store.addPost.bind(store)}
+        updatePostText={store.updatePostText.bind(store)}
+        addNewMessage={store.addNewMessage.bind(store)}
+        updateMessageText={store.updateMessageText.bind(store)}
       />
     </BrowserRouter>,
     document.getElementById('root')
   );
 };
 
-rerenderApp(state);
+rerenderApp(store);
 
-subscribe(rerenderApp);
+store.subscribe(rerenderApp);
