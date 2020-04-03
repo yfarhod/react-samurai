@@ -3,9 +3,9 @@ import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import {
-  addNewMessageActioCreator,
+  addNewMessageActionCreator,
   updateMessageTextActionCreator
-} from '../../redux/state';
+} from '../../redux/dialogsReducer';
 
 const Dialogs = props => {
   const dialogsElements = props.dialogsPage.dialogs.map(d => (
@@ -23,7 +23,7 @@ const Dialogs = props => {
   );
 
   const addMessage = () => {
-    props.dispatch(addNewMessageActioCreator());
+    props.dispatch(addNewMessageActionCreator());
   };
 
   const onMessageChange = e => {
