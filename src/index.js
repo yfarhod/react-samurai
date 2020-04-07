@@ -5,10 +5,10 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
 
-export const rerenderApp = state => {
+export const rerenderApp = () => {
   ReactDOM.render(
     <BrowserRouter>
-      <App state={state} dispatch={store.dispatch.bind(store)} />
+      <App store={store} />
     </BrowserRouter>,
     document.getElementById('root')
   );
