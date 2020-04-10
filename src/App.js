@@ -10,18 +10,15 @@ import Settings from './components/Settings/Settings';
 import { Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-const App = props => {
+const App = () => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar sidebar={props.store.getState().sidebar} />
+      <Navbar />
       <div className="app-wrapper-content">
-        <Route path="/" exact render={() => <Profile store={props.store} />} />
-        <Route path="/profile" render={() => <Profile store={props.store} />} />
-        <Route
-          path="/dialogs"
-          render={() => <DialogsContainer store={props.store} />}
-        />
+        <Route path="/" exact render={() => <Profile />} />
+        <Route path="/profile" render={() => <Profile />} />
+        <Route path="/dialogs" render={() => <DialogsContainer />} />
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
         <Route path="/settings" component={Settings} />

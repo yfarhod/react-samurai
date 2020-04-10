@@ -2,8 +2,9 @@ import React from 'react';
 import s from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
+import StoreContext from '../../StoreContext';
 
-const Navbar = props => {
+const Navbar = () => {
   return (
     <nav className={s.nav}>
       <div className={s.item}>
@@ -33,7 +34,11 @@ const Navbar = props => {
       </div>
       <div>
         <br />
-        <Sidebar sidebar={props.sidebar} />
+        <StoreContext.Consumer>
+          {store => {
+            return <Sidebar sidebar={store.getState().sidebar} />;
+          }}
+        </StoreContext.Consumer>
       </div>
     </nav>
   );
