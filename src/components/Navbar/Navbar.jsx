@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
-import Sidebar from '../Sidebar/Sidebar';
-import StoreContext from '../../StoreContext';
+
+import SidebarContainer from '../Sidebar/SidebarContainer';
 
 const Navbar = () => {
   return (
@@ -34,11 +34,7 @@ const Navbar = () => {
       </div>
       <div>
         <br />
-        <StoreContext.Consumer>
-          {store => {
-            return <Sidebar sidebar={store.getState().sidebar} />;
-          }}
-        </StoreContext.Consumer>
+        <SidebarContainer />
       </div>
     </nav>
   );
