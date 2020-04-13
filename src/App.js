@@ -9,6 +9,7 @@ import Settings from './components/Settings/Settings';
 
 import { Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/" exact render={() => <Profile />} />
         <Route path="/profile" render={() => <Profile />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
         <Route path="/settings" component={Settings} />
