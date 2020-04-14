@@ -51,14 +51,14 @@ const Users = props => {
             </div>
           </span>
           <span>
-            <div>
-              <span>{u.fullName}</span>
-              <span>{u.location.city}</span>
-            </div>
-            <div>
-              <span>{u.status}</span>
-              <span>{u.location.country}</span>
-            </div>
+            <span>
+              <div>{u.fullName}</div>
+              <div>{u.status}</div>
+            </span>
+            <span>
+              <div>{u.location.city}</div>
+              <div>{u.location.country}</div>
+            </span>
           </span>
         </div>
       ))}
