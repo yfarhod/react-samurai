@@ -3,14 +3,17 @@ import styles from './Users.module.css';
 import * as axios from 'axios';
 
 const Users = props => {
-  if (props.users.length === 0) {
-    axios('https://social-network.samuraijs.com/api/1.0/users').then(response =>
-      props.setUsers(response.data.items)
-    );
-  }
+  const getUsers = () => {
+    if (props.users.length === 0) {
+      axios(
+        'https://social-network.samuraijs.com/api/1.0/users'
+      ).then(response => props.setUsers(response.data.items));
+    }
+  };
 
   return (
     <div className={styles.container}>
+      <button onClick={getUsers}>Get Users</button>
       {props.users.map(u => (
         <div key={u.id}>
           <span>
