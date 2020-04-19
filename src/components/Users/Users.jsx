@@ -10,8 +10,21 @@ class Users extends React.Component {
   }
 
   render() {
+    let totalPages = Math.ceil(
+      this.props.totalUsersCount / this.props.countPages
+    );
+
+    let pagesArray = [];
+
+    for (let i = 1; i <= totalPages; i++) {
+      pagesArray.push(i);
+    }
+
     return (
       <div className={styles.container}>
+        {pagesArray.map(p => (
+          <span>{p}</span>
+        ))}
         {this.props.users.map(u => (
           <div key={u.id}>
             <span>
