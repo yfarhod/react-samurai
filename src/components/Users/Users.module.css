@@ -5,3 +5,13 @@
 .photo img {
   width: 75px;
 }
+
+.selectedPage {
+  font-weight: bold;
+}
+
+.pagination {
+  word-wrap: normal;
+  display: inline-block;
+  cursor: pointer;
+}

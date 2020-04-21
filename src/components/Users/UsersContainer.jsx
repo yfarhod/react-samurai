@@ -4,14 +4,16 @@ import {
   followAC,
   unfollowAC,
   usersAC,
-  totalUsersCountAC
+  totalUsersCountAC,
+  currentPageAC
 } from '../../redux/usersReducer';
 
 const mapStateToProps = state => {
   return {
     users: state.usersPage.users,
     totalUsersCount: state.usersPage.totalUsersCount,
-    countPages: state.usersPage.countPages
+    countPages: state.usersPage.countPages,
+    currentPage: state.usersPage.currentPage
   };
 };
 
@@ -28,6 +30,9 @@ const mapDispatchToProps = dispatch => {
     },
     setTotalUsers: totalUsersCount => {
       dispatch(totalUsersCountAC(totalUsersCount));
+    },
+    setCurrentPage: currentPage => {
+      dispatch(currentPageAC(currentPage));
     }
   };
 };

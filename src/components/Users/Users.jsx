@@ -4,10 +4,26 @@ import * as axios from 'axios';
 
 class Users extends React.Component {
   componentDidMount() {
-    axios('https://social-network.samuraijs.com/api/1.0/users').then(response =>
-      this.props.setUsers(response.data.items)
-    );
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.countPages}`
+      )
+      .then(response => {
+        this.props.setUsers(response.data.items);
+        this.props.setTotalUsers(response.data.totalCount);
+      });
   }
+
+  onChangePage = currentPage => {
+    this.props.setCurrentPage(currentPage);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.countPages}`
+      )
+      .then(response => {
+        this.props.setUsers(response.data.items);
+      });
+  };
 
   render() {
     let totalPages = Math.ceil(
@@ -22,9 +38,21 @@ class Users extends React.Component {
 
     return (
       <div className={styles.container}>
-        {pagesArray.map(p => (
-          <span>{p}</span>
-        ))}
+        <div>
+          {pagesArray.map(p => (
+            <span
+              className={
+                styles.pagination +
+                ' ' +
+                (this.props.currentPage === p && styles.selectedPage)
+              }
+              onClick={() => this.onChangePage(p)}
+            >
+              {p}
+            </span>
+          ))}
+        </div>
+
         {this.props.users.map(u => (
           <div key={u.id}>
             <span>
