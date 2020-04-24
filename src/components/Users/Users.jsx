@@ -2,10 +2,18 @@ import React from 'react';
 import styles from './Users.module.css';
 
 const Users = props => {
+  let totalPages = Math.ceil(props.totalUsersCount / props.countPages);
+
+  let pagesArray = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    pagesArray.push(i);
+  }
+
   return (
     <div className={styles.container}>
       <div>
-        {props.pagesArray.map(p => (
+        {pagesArray.map(p => (
           <span
             className={
               styles.pagination +

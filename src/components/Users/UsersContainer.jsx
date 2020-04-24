@@ -33,19 +33,10 @@ class UsersContainer extends React.Component {
       });
   };
   render() {
-    let totalPages = Math.ceil(
-      this.props.totalUsersCount / this.props.countPages
-    );
-
-    let pagesArray = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-      pagesArray.push(i);
-    }
-
     return (
       <Users
-        pagesArray={pagesArray}
+        totalUsersCount={this.props.totalUsersCount}
+        countPages={this.props.countPages}
         currentPage={this.props.currentPage}
         onChangePage={this.onChangePage}
         users={this.props.users}
