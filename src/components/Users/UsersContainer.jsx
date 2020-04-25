@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Users from './Users';
+import Preloader from '../common/Preloader/Preloader';
 import {
   followAC,
   unfollowAC,
@@ -39,16 +40,21 @@ class UsersContainer extends React.Component {
   };
   render() {
     return (
-      <Users
-        totalUsersCount={this.props.totalUsersCount}
-        countPages={this.props.countPages}
-        currentPage={this.props.currentPage}
-        onChangePage={this.onChangePage}
-        users={this.props.users}
-        unfollow={this.props.unfollow}
-        follow={this.props.follow}
-        isFetching={this.props.isFetching}
-      />
+      <>
+        {this.props.isFetching ? (
+          <Preloader />
+        ) : (
+          <Users
+            totalUsersCount={this.props.totalUsersCount}
+            countPages={this.props.countPages}
+            currentPage={this.props.currentPage}
+            onChangePage={this.onChangePage}
+            users={this.props.users}
+            unfollow={this.props.unfollow}
+            follow={this.props.follow}
+          />
+        )}
+      </>
     );
   }
 }
