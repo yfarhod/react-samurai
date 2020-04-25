@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Users.module.css';
+import preloader from '../../assets/images/preloader.svg';
 
 const Users = props => {
+  debugger;
   let totalPages = Math.ceil(props.totalUsersCount / props.countPages);
 
   let pagesArray = [];
@@ -13,8 +15,12 @@ const Users = props => {
   return (
     <div className={styles.container}>
       <div>
+        {props.isFetching ? <img src={preloader} alt="preloader" /> : null}
+      </div>
+      <div>
         {pagesArray.map(p => (
           <span
+            key={p}
             className={
               styles.pagination +
               ' ' +
